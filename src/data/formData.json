@@ -1,0 +1,30 @@
+{
+  "name": {
+    "autofocus": "false",
+    "autocomplete": "on",
+    "placeholder": "John Smith",
+    "type": "text",
+    "name": "name"
+  },
+  "email": {
+    "autofocus": "false",
+    "autocomplete": "on",
+    "placeholder": "john@yahoo.com",
+    "type": "email",
+    "name": "email"
+  },
+  "password": {
+    "autofocus": "false",
+    "autocomplete": "off",
+    "placeholder": "********",
+    "type": "password",
+    "name": "password"
+  },
+  "address": {
+    "autofocus": "false",
+    "autocomplete": "on",
+    "placeholder": "Sunny Valley, California",
+    "type": "text",
+    "name": "address"
+  }
+}
