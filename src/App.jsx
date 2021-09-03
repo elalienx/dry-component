@@ -1,5 +1,8 @@
 // Project files
+import CourseItem from "./components/CourseItem";
 import CourseList from "./components/CourseList";
+import List from "./components/List";
+import ShoppingItem from "./components/ShoppingItem";
 import ShoppingList from "./components/ShoppingList";
 import "./css/sakura.css";
 
@@ -37,10 +40,14 @@ export default function App() {
       <h1>Dry + Abstraction</h1>
 
       {/* Not scalable */}
+      <h2>Not scalable</h2>
       <CourseList list={courseData} />
       <ShoppingList list={shoppingData} />
 
       {/* Scalable solution */}
+      <h2>Scalable</h2>
+      <List list={courseData} Component={CourseItem} />
+      <List list={shoppingData} Component={ShoppingItem} />
     </div>
   );
 }
