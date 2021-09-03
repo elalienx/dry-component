@@ -1,54 +1,53 @@
+// NPM Package
+import { useState } from "react";
+
 // Project files
-import CourseItem from "./components/CourseItem";
-import CourseList from "./components/CourseList";
-import List from "./components/List";
-import ShoppingItem from "./components/ShoppingItem";
-import ShoppingList from "./components/ShoppingList";
-import "./css/lists.css";
+import InputField from "./components/InputField";
 import "./css/sakura.css";
 
 export default function App() {
-  // Properties
-  const courseData = [
-    {
-      id: 0,
-      name: "Summer bootcamp",
-      difficulty: "easy",
-      imageURL: "https://picsum.photos/50",
-    },
-    {
-      id: 1,
-      name: "Frontend",
-      difficulty: "medium",
-      imageURL: "https://picsum.photos/50",
-    },
-    {
-      id: 2,
-      name: "Backend",
-      difficulty: "hard",
-      imageURL: "https://picsum.photos/50",
-    },
-  ];
+  const [user, setUser] = useState({}); // email, password
 
-  const shoppingData = [
-    { id: 0, name: "Sofa", price: 555, acquired: false },
-    { id: 1, name: "TV Stand", price: 800, acquired: true },
-    { id: 2, name: "Cushion", price: 49, acquired: false },
-  ];
+  const emailSettings = {
+    key: "email",
+    label: "Email",
+    type: "text",
+    placeholder: "john@yahoo.com",
+  };
+  const passwordSettings = {
+    key: "password",
+    label: "Password",
+    type: "number",
+    placeholder: "12345678",
+  };
+
+  // Method
+  function updateUser(key, value) {
+    console.log("App.jsx updateUser() key:", key);
+    console.log("App.jsx updateUser() value:", value);
+
+    const updatedUser = user;
+    updatedUser[key] = value;
+
+    setUser({ ...updatedUser });
+  }
 
   return (
     <div className="App">
-      <h1>Dry + Abstraction</h1>
+      <h1>Cleaner input field</h1>
+      <p>Email: {user.email}</p>
+      <p>Pass: {user.password}</p>
 
-      {/* Not scalable */}
-      <h2>Not scalable</h2>
-      <CourseList list={courseData} />
-      <ShoppingList list={shoppingData} />
-
-      {/* Scalable solution */}
-      <h2>Scalable</h2>
-      <List list={courseData} Component={CourseItem} />
-      <List list={shoppingData} Component={ShoppingItem} />
+      <form>
+        <InputField
+          handler={(key, value) => updateUser(key, value)}
+          settings={emailSettings}
+        />
+        <InputField
+          handler={(key, value) => updateUser(key, value)}
+          settings={passwordSettings}
+        />
+      </form>
     </div>
   );
 }
