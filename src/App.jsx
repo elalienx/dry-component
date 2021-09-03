@@ -1,42 +1,46 @@
-// NPM Packages
-import { useState } from "react";
-
 // Project files
-import InputField from "./components/InputField";
-import formData from "./data/formData.json"; // moved to the data folder
-import "./css/sakura.css"; // added Sakura CSS for a quick layout
+import CourseList from "./components/CourseList";
+import ShoppingList from "./components/ShoppingList";
+import "./css/sakura.css";
 
 export default function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
+  // Properties
+  const courseData = [
+    {
+      id: 0,
+      name: "Summer bootcamp",
+      difficulty: "easy",
+      imageURL: "https://picsum.photos/50",
+    },
+    {
+      id: 1,
+      name: "Frontend",
+      difficulty: "medium",
+      imageURL: "https://picsum.photos/50",
+    },
+    {
+      id: 2,
+      name: "Backend",
+      difficulty: "hard",
+      imageURL: "https://picsum.photos/50",
+    },
+  ];
+
+  const shoppingData = [
+    { id: 0, name: "Sofa", price: 555, acquired: false },
+    { id: 1, name: "TV Stand", price: 800, acquired: true },
+    { id: 2, name: "Cushion", price: 49, acquired: false },
+  ];
 
   return (
     <div className="App">
-      <header>
-        <h1>3R DRY</h1>
-        <p>Name state: "{name}".</p>
-        <p>Email state: "{email}".</p>
-        <p>Password state: "{password}".</p>
-      </header>
+      <h1>Dry + Abstraction</h1>
 
-      <hr />
+      {/* Not scalable */}
+      <CourseList list={courseData} />
+      <ShoppingList list={shoppingData} />
 
-      <form>
-        <InputField hook={[name, setName]} settings={formData.name}>
-          Full name
-        </InputField>
-        <InputField hook={[email, setEmail]} settings={formData.email}>
-          Email
-        </InputField>
-        <InputField hook={[password, setPassword]} settings={formData.password}>
-          Password
-        </InputField>
-        <InputField hook={[address, setAddress]} settings={formData.address}>
-          Shipping address
-        </InputField>
-      </form>
+      {/* Scalable solution */}
     </div>
   );
 }
