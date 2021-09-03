@@ -4,6 +4,7 @@ import CourseList from "./components/CourseList";
 import List from "./components/List";
 import ShoppingItem from "./components/ShoppingItem";
 import ShoppingList from "./components/ShoppingList";
+import "./css/lists.css";
 import "./css/sakura.css";
 
 export default function App() {
